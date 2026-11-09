@@ -44,6 +44,19 @@ public partial class OptionContainerItemViewModel : ObservableObject, IOptionCon
             return;
         }
 
+        if (option.Choices is { Count: > 0 } choices)
+        {
+            EnumValues = new List<string>(choices);
+            string? defaultChoice = option.DefaultValue?.ToString();
+            SelectedValue = EnumValues.Contains(currentRawVal)
+                ? currentRawVal
+                : defaultChoice is not null && EnumValues.Contains(defaultChoice)
+                    ? defaultChoice
+                    : EnumValues[0];
+            _value = SelectedValue;
+            return;
+        }
+
         if (Type == typeof(bool))
         {
             if (bool.TryParse(currentRawVal, out bool parsedBool))
@@ -101,7 +114,9 @@ public partial class OptionContainerItemViewModel : ObservableObject, IOptionCon
     public Type Type { get; }
     public string Category { get; }
 
-    public bool IsEnum => Type.IsEnum;
+    public bool HasChoices => Option.Choices is { Count: > 0 };
+    // Choice lists reuse the enum dropdown path (EnumValues / SelectedValue).
+    public bool IsEnum => Type.IsEnum || HasChoices;
     public bool IsBool => Type == typeof(bool);
     public bool IsText => !IsEnum && !IsBool;
 
@@ -111,6 +126,13 @@ public partial class OptionContainerItemViewModel : ObservableObject, IOptionCon
         {
             string defaultStr = Option.DefaultValue?.ToString()?.Replace('_', ' ') ?? (EnumValues?.Count > 0 ? EnumValues[0] : string.Empty);
             SelectedValue = EnumValues != null && EnumValues.Contains(defaultStr) ? defaultStr : (EnumValues?.Count > 0 ? EnumValues[0] : string.Empty);
+            _value = SelectedValue;
+            OnPropertyChanged(nameof(Value));
+        }
+        else if (HasChoices)
+        {
+            string defChoice = Option.DefaultValue?.ToString() ?? string.Empty;
+            SelectedValue = EnumValues != null && EnumValues.Contains(defChoice) ? defChoice : EnumValues![0];
             _value = SelectedValue;
             OnPropertyChanged(nameof(Value));
         }

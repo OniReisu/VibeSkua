@@ -11,6 +11,11 @@ public class Option<T> : IOption where T : IConvertible
     public object? DefaultValue { get; set; }
     public bool Transient { get; set; }
 
+    /// <summary>
+    /// Optional fixed list of allowed values; see <see cref="IOption.Choices"/>.
+    /// </summary>
+    public IReadOnlyList<string>? Choices { get; set; }
+
     public Type Type => typeof(T);
 
     /// <summary>
