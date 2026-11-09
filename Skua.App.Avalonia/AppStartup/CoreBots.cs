@@ -41,6 +41,7 @@ internal class CoreBots
             new DisplayOptionItemViewModel<bool>("Disable BestGear", "DisableBestGear"),
             new DisplayOptionItemViewModel<bool>("Anti Lag", "AntiLag", true),
             new DisplayOptionItemViewModel<bool>("Incognito Mode", "IncognitoMode", true),
+            new DisplayOptionItemViewModel<bool>("Use Custom Identity", "UseCustomIdentity"),
 
             new DisplayOptionItemViewModel<int>("Room Number", "PrivateRoomNr", 100000),
             new DisplayOptionItemViewModel<int>("Action Delay", "ActionDelayNr", 700),
@@ -50,6 +51,8 @@ internal class CoreBots
             new DisplayOptionItemViewModel<int>("Loaded Quests Max.", "QuestMaxNr", 150),
 
             new DisplayOptionItemViewModel<string>("Map after stopping the Bot", "StopLocationSelect", "Home"),
+            new DisplayOptionItemViewModel<string>("Custom Name (needs Use Custom Identity)", "CustomIdentityName", ""),
+            new DisplayOptionItemViewModel<string>("Custom Guild (needs Use Custom Identity)", "CustomIdentityGuild", ""),
         };
 
         return new(options, s.GetRequiredService<IDialogService>());

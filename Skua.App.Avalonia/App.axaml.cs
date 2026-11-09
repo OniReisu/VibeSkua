@@ -395,6 +395,8 @@ public partial class App : Application
             Console.Error.WriteLine($"Startup plugin init failed: {ex.GetType().Name}: {ex.Message}");
         }
 
+        IdentityKeeper.Start();
+
         try
         {
             Ioc.Default.GetRequiredService<IHotKeyService>().Reload();
