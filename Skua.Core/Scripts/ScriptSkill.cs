@@ -165,10 +165,12 @@ public partial class ScriptSkill : IScriptSkill
             Wait.ForItemEquip(className);
         }
 
+        // A renamed copy of a class (e.g. Archivist of Temporis) uses its original's profile when it has none of its own.
+        string profileName = ClassAliases.ResolveProfileName(className, AdvancedSkillContainer.LoadedSkills.Select(x => x.ClassName));
         List<AdvancedSkill> skills = new();
         foreach (AdvancedSkill s in AdvancedSkillContainer.LoadedSkills)
         {
-            if (string.Equals(s.ClassName, className, StringComparison.CurrentCultureIgnoreCase))
+            if (string.Equals(s.ClassName, profileName, StringComparison.CurrentCultureIgnoreCase))
                 skills.Add(s);
         }
         if (skills.Count == 0)

@@ -364,7 +364,13 @@ public class AdvancedSkillContainer : ObservableRecipient, IAdvancedSkillContain
 
     public AdvancedSkill? GetClassModeSkills(string className, string mode)
     {
-        return _loadedSkills.FirstOrDefault(s => s.ClassName == className && s.ClassUseMode.ToString() == mode);
+        AdvancedSkill? exact = _loadedSkills.FirstOrDefault(s => s.ClassName == className && s.ClassUseMode.ToString() == mode);
+        if (exact is not null)
+            return exact;
+        string profileName = ClassAliases.ResolveProfileName(className, _loadedSkills.Select(s => s.ClassName));
+        return profileName == className
+            ? null
+            : _loadedSkills.FirstOrDefault(s => s.ClassName == profileName && s.ClassUseMode.ToString() == mode);
     }
 
     public void ResetSkillsSets()

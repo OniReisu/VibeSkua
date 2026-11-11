@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using Skua.Core.Interfaces;
 using Skua.Core.Models.Items;
 using Skua.Core.Models.Skills;
+using Skua.Core.Skills;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,7 +39,7 @@ public partial class CBOClassSelectViewModel : ObservableObject, IManageCBOption
 
                 if (value == CurrentClassOption)
                 {
-                    classToUse = _player.CurrentClass?.Name ?? string.Empty;
+                    classToUse = ClassAliases.ResolveProfileName(_player.CurrentClass?.Name ?? string.Empty, _advancedSkills.LoadedSkills.Select(x => x.ClassName));
                     if (string.IsNullOrEmpty(classToUse))
                     {
                         SoloUseModes.Add(ClassUseMode.Base);
@@ -127,7 +128,7 @@ public partial class CBOClassSelectViewModel : ObservableObject, IManageCBOption
 
                 if (value == CurrentClassOption)
                 {
-                    classToUse = _player.CurrentClass?.Name ?? string.Empty;
+                    classToUse = ClassAliases.ResolveProfileName(_player.CurrentClass?.Name ?? string.Empty, _advancedSkills.LoadedSkills.Select(x => x.ClassName));
                     if (string.IsNullOrEmpty(classToUse))
                     {
                         FarmUseModes.Add(ClassUseMode.Base);
@@ -216,7 +217,7 @@ public partial class CBOClassSelectViewModel : ObservableObject, IManageCBOption
 
                 if (value == CurrentClassOption)
                 {
-                    classToUse = _player.CurrentClass?.Name ?? string.Empty;
+                    classToUse = ClassAliases.ResolveProfileName(_player.CurrentClass?.Name ?? string.Empty, _advancedSkills.LoadedSkills.Select(x => x.ClassName));
                     if (string.IsNullOrEmpty(classToUse))
                     {
                         DodgeUseModes.Add(ClassUseMode.Base);
@@ -305,7 +306,7 @@ public partial class CBOClassSelectViewModel : ObservableObject, IManageCBOption
 
                 if (value == CurrentClassOption)
                 {
-                    classToUse = _player.CurrentClass?.Name ?? string.Empty;
+                    classToUse = ClassAliases.ResolveProfileName(_player.CurrentClass?.Name ?? string.Empty, _advancedSkills.LoadedSkills.Select(x => x.ClassName));
                     if (string.IsNullOrEmpty(classToUse))
                     {
                         BossUseModes.Add(ClassUseMode.Base);
