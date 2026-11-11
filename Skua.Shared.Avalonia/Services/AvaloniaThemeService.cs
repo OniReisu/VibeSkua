@@ -28,7 +28,7 @@ public class AvaloniaThemeService : IThemeService, INotifyPropertyChanged
     private readonly ISettingsService _settingsService;
     private static readonly Dictionary<string, Color> AccentMap = new(StringComparer.OrdinalIgnoreCase)
     {
-        ["Default"] = Color.Parse("#10B981"),
+        ["Default"] = Color.Parse("#D6142B"),
         ["Pink"] = Color.Parse("#C9479A"),
         ["Ocean"] = Color.Parse("#2E6DD8"),
         ["Forest"] = Color.Parse("#2E9D57"),
@@ -635,6 +635,7 @@ public class AvaloniaThemeService : IThemeService, INotifyPropertyChanged
     {
         return new StringCollection
         {
+            "Nacht,Dark,#FFD6142B,#FF7A0F1C,#FFFFFFFF,#FFFFFFFF,true,4.5,Medium,All",
             "Skua,Dark,#FF607D8B,#FF607D8B,#FF000000,#FF000000,true,4.5,Medium,All",
             "RBot,Light,#FF9C934E,#FF9C934E,#FF000000,#FF000000",
             "Grimoire,Dark,#FFCC1F41,#FFCC1F41,#FFFFFFFF,#FFFFFFFF",

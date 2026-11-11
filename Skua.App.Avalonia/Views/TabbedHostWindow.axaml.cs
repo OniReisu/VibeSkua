@@ -341,7 +341,7 @@ public partial class TabbedHostWindow : Window
         _initialArgs = initialArgs ?? Array.Empty<string>();
         InitializeComponent();
         LoadArmyJumpSettings();
-        Title = $"VibeSkua V{Skua.Core.Models.ClientFileSources.DisplayVersion}";
+        Title = $"NachtSkua V{Skua.Core.Models.ClientFileSources.DisplayVersion}";
         MainTitleBar.TitleText = Title;
 
         try
@@ -2079,7 +2079,7 @@ public partial class TabbedHostWindow : Window
             IScriptServers? scriptServers = Ioc.Default.GetService<IScriptServers>();
             if (scriptServers is null)
             {
-                Ioc.Default.GetService<IDialogService>()?.ShowMessageBox("The server service is unavailable. Please restart VibeSkua and try again.", "Change Server for All");
+                Ioc.Default.GetService<IDialogService>()?.ShowMessageBox("The server service is unavailable. Please restart NachtSkua and try again.", "Change Server for All");
                 return;
             }
 

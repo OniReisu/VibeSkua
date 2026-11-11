@@ -83,7 +83,7 @@ public static class AppShortcutHelper
                                 // Fix legacy/buggy shortcut that pointed to manager instead of client
                                 existingLink.Target = clientExe;
                                 existingLink.WorkingDirectory = appDir;
-                                existingLink.Description = "VibeSkua - AQW Client";
+                                existingLink.Description = "NachtSkua - AQW Client";
                                 existingLink.IconPath = clientExe;
                                 existingLink.IconIndex = 0;
                                 existingLink.Save();
@@ -107,7 +107,7 @@ public static class AppShortcutHelper
                             using var clientLink = new ShellLink();
                             clientLink.Target = clientExe;
                             clientLink.WorkingDirectory = appDir;
-                            clientLink.Description = "VibeSkua - AQW Client";
+                            clientLink.Description = "NachtSkua - AQW Client";
                             clientLink.IconPath = clientExe;
                             clientLink.IconIndex = 0;
                             clientLink.Save(clientLnk);
@@ -138,7 +138,7 @@ public static class AppShortcutHelper
                             using var mgrLink = new ShellLink();
                             mgrLink.Target = managerExe;
                             mgrLink.WorkingDirectory = appDir;
-                            mgrLink.Description = "VibeSkua Manager";
+                            mgrLink.Description = "NachtSkua Manager";
                             mgrLink.IconPath = managerExe;
                             mgrLink.IconIndex = 0;
                             mgrLink.Save(managerLnk);

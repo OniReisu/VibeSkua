@@ -223,7 +223,7 @@ public static class ThemeResourceApplicator
         string? accentForegroundHex = null,
         string? secondaryHex = null,
         string? secondaryForegroundHex = null,
-        string fallbackAccentHex = "#10B981",
+        string fallbackAccentHex = "#D6142B",
         bool? isDarkTheme = null)
     {
         Color primary = ParseColorSafe(accentHex, GetResourceColor(app, "SkuaAccentColor", fallbackAccentHex));

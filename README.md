@@ -1,4 +1,6 @@
-# VibeSkua
+# NachtSkua
+> NachtSkua is a dark black-and-red fork of [VibeSkua](https://github.com/NinjaXz/VibeSkua).
+
 > **Note:** This project is **Vibe Coded**—built through AI-assisted development, and pure momentum.
 
 A feature-rich, high-performance rehaul of [auqw/skua](https://github.com/auqw/skua) (v1.4.3.0), building upon the early Avalonia port by [ArrowDev](https://github.com/ArrowDev123/Skua) (BlackArrow on Discord). Upgraded with native multi-client army orchestration, headless performance, and core stability fixes.

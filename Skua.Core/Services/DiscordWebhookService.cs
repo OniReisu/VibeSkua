@@ -424,7 +424,7 @@ public class DiscordWebhookService : IDiscordWebhookService, IDisposable
         EnqueueAction(async () =>
         {
             List<object> fields = BuildDashboardSnapshotFields();
-            await SendEmbedToUrlAsync(url, "Discord Webhook Test Successful!", "Your VibeSkua Discord Webhooks are perfectly configured.", 0x00FF00, fields);
+            await SendEmbedToUrlAsync(url, "Discord Webhook Test Successful!", "Your NachtSkua Discord Webhooks are perfectly configured.", 0x00FF00, fields);
         });
 
         return Task.CompletedTask;
@@ -439,7 +439,7 @@ public class DiscordWebhookService : IDiscordWebhookService, IDisposable
         EnqueueAction(async () =>
         {
             List<object> fields = BuildDashboardSnapshotFields();
-            await SendEmbedToUrlAsync(url, "Skua Nexus Webhook Test Successful!", "Your VibeSkua Nexus Webhooks are perfectly configured.", 0x00FF00, fields);
+            await SendEmbedToUrlAsync(url, "Skua Nexus Webhook Test Successful!", "Your NachtSkua Nexus Webhooks are perfectly configured.", 0x00FF00, fields);
         });
 
         return Task.CompletedTask;
