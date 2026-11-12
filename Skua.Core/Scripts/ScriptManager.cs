@@ -494,7 +494,11 @@ public partial class ScriptManager : ObservableObject, IScriptManager, IDisposab
         {
             _includedFilesLock.ExitReadLock();
         }
-        CompiledScript = final;
+        // Included files are compiled as separate assemblies, so `final` is only the main script's own source.
+        // Community scripts read this text (CoreBots.CompiledScript, used by Story.PreLoad) to find their own class
+        // and its quest IDs. A class defined in an included file (CoreShadowofDoom, Core13LoC, ...) was therefore
+        // never found. Expose the included sources as well.
+        CompiledScript = sourceCache.IsEmpty ? final : final + "\n" + string.Join("\n", sourceCache.Values);
         string scriptName = Path.GetFileNameWithoutExtension(LoadedScript);
 
         Compiler compiler = Ioc.Default.GetRequiredService<Compiler>();
